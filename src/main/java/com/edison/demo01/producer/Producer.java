@@ -8,6 +8,7 @@ import com.alibaba.rocketmq.common.message.Message;
 import java.io.UnsupportedEncodingException;
 
 /**
+ * Producer，发送顺序消息
  * @author edison
  * @version 1.0
  * @create 2021-02-01 10:53

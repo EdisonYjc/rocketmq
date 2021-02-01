@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * 顺序消息消费，带事务方式（应用可控制Offset什么时候提交）
  * @author edison
  * @version 1.0
  * @create 2021-02-01 13:07
@@ -20,6 +21,10 @@ public class Consumer {
     public static void main(String[] args) throws MQClientException {
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("CousumerGroup");
         consumer.setNamesrvAddr("127.0.0.1:9876");
+        /**
+         * 设置Consumer第一次启动是从队列头部开始消费还是队列尾部开始消费
+         * 如果非第一次启动，那么按照上次消费的位置继续消费
+         */
         consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
         consumer.subscribe("TopicTest","*");
         consumer.registerMessageListener(new MessageListenerConcurrently() {
