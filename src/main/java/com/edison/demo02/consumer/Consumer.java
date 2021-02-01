@@ -55,7 +55,6 @@ public class Consumer {
 
         consumer.start();
 
-        System.out.println("123");
         System.out.println("Consumer1 Started.");
     }
 }
